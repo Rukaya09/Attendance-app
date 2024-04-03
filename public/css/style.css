@@ -1,0 +1,22 @@
+*{
+    margin:0;
+    padding:0;
+
+}
+.navbar{
+    display:flex;
+    background-color: black;
+    color:#fff;
+    justify-content: space-around;
+}
+.navbar a{
+    color:#fff;
+
+}
+.foooter{
+    display:flex;
+    color:#fff;
+    background-color: rgb(27, 41, 41);
+    justify-content: space-around;
+
+}
