@@ -52,5 +52,51 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+<div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">Leave Data</div>
+                    <div class="card-body">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>User Profile ID</th>
+                                    <th>Description</th>
+                                    <th>Leave Type</th>
+                                    <th>Is Approved</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($leaves as $leave)
+                                    <tr>
+                                        <td>{{ $leave->userprofile_id }}</td>
+                                        <td>{{ $leave->description }}</td>
+                                        <td>{{ $leave->leavetype }}</td>
+                                        <td>{{ $leave->is_approved }}</td>
+                                        <td>
+                                            <a href="{{ route('edit', $leave->id) }}" class="btn btn-primary">Edit</a>
+                                            <form action="{{ route('delete', $leave->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @include('layouts.footer')

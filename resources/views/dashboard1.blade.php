@@ -135,12 +135,11 @@
 
 
 
-  <!-- @php
-   if(Session('uid')){
+   @php
     $records=Session::get('uid');
      echo $records->username."<br>"; 
      echo "<a href='logout'>logout</a>";
-         }
-  @endphp -->
+         
+  @endphp  
 </body>
 </html>

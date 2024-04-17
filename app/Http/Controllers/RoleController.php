@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Role; // Assuming you have a Role 
+use App\Models\role; // Assuming you have a Role 
 
 
 class RoleController extends Controller
@@ -11,14 +11,18 @@ class RoleController extends Controller
     public function createForm()
     {
         return view('role');
+        return response()->json(['message' => 'This is the create form for roles']);
+
     }
 
     public function manageRoles()
     {
         // Fetch all roles from the database
         $roles = Role::all();
+        return response()->json(['roles' => $roles]);
 
-        return view('role.manageroles', compact('roles'));
+
+        // return view('role.manageroles', compact('roles'));
     }
 
     public function store(Request $request)
@@ -30,8 +34,9 @@ class RoleController extends Controller
         Role::create([
             'title' => $request->input('title'),
         ]);
+        return response()->json(['message' => 'Role added successfully']);
 
-        return redirect()->route('role')->with('success', 'Role added successfully!');
+        // return redirect()->route('role')->with('success', 'Role added successfully!');
     }
 
     public function storeRoles(Request $request)

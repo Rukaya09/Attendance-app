@@ -16,7 +16,7 @@ class login extends Controller
               ->get();
              if($records->isNotEmpty()){
               $req->session()->put('uid',$records[0]);
-               return redirect('dashboard1');
+               return redirect('role/userprofile');
              }
              else {
                 return redirect('userform')->with ('msg','Invalid Username or password');
@@ -28,6 +28,6 @@ class login extends Controller
 
 
             }
-
+        
 }
     
